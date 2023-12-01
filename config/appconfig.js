@@ -6,7 +6,7 @@ require('dotenv').config();
 module.exports = {
 	app: {
 		port: process.env.DEV_APP_PORT || 3000,
-		appName: process.env.APP_NAME || 'VideoPlattform',
+		appName: process.env.APP_NAME || 'CoursePlattform',
 		env: process.env.NODE_ENV || 'development',
 	},
 	db: {
@@ -19,7 +19,7 @@ module.exports = {
 		logging: true,
 	},
 	winiston: {
-		logpath: '/VideoPlattformLogs/logs/',
+		logpath: '/CoursePlattformLogs/logs/',
 	},
 	auth: {
 		jwt_secret: process.env.JWT_SECRET,
