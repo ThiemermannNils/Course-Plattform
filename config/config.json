@@ -1,29 +1,29 @@
 {
   "development": {
-  "url" : "postgres://postgres:password@localhost:5432/iLrn",
-  "username": "postgres",
-  "password": "password",
-  "database": "iLrn",
-  "host": "127.0.0.1",
-  "port": 5432,
-  "dialect": "postgres"
+    "url" : "mysql://user:password@localhost:3306/video_plattform",
+    "username": "root",
+    "password": "123",
+    "database": "video_plattform",
+    "host": "127.0.0.1",
+    "port": 3306,
+     "dialect": "mysql"
   },
   "test": {
-  "url" : "postgres://postgres:password@localhost:5432/iLrn",
-  "username": "postgres",
-  "password": "password",
-  "database": "iLrn",
-  "host": "127.0.0.1",
-  "port": 5432,
-  "dialect": "postgres"
+    "url" : "mysql://user:password@localhost:3306/video_plattform",
+    "username": "root",
+    "password": "123",
+    "database": "video_plattform",
+    "host": "127.0.0.1",
+    "port": 3306,
+     "dialect": "mysql"
   },
   "production": {
-  "url" : "postgres://postgres:password@localhost:5432/iLrn",
-  "username": "postgres",
-  "password": "password",
-  "database": "iLrn",
-  "host": "127.0.0.1",
-  "port": 5432,
-   "dialect": "postgres"
+    "url" : "mysql://user:password@localhost:3306/video_plattform",
+    "username": "root",
+    "password": "123",
+    "database": "video_plattform",
+    "host": "127.0.0.1",
+    "port": 3306,
+      "dialect": "mysql"
   }
 }
