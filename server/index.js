@@ -5,6 +5,11 @@ const compression = require('compression');
 const uuid = require('uuid');
 const config = require('../config/appconfig');
 const Logger = require('../utils/logger.js');
+var passport = require('passport');
+var session = require('express-session');
+//Models 
+var models = require("../models");
+
 
 const logger = new Logger();
 const app = express();
@@ -22,8 +27,6 @@ process.on('SIGINT', () => {
 	process.exit();
 });
 
-app.set('db', require('../models/index.js'));
-
 app.set('port', process.env.DEV_APP_PORT);
 app.use('/api/docs', swagger.router);
 
@@ -35,6 +38,26 @@ app.use((req, res, next) => {
 });
 
 app.use(require('../router'));
+
+// For Passport 
+app.use(session({
+	secret: 'keyboard cat',
+	resave: true, 
+	saveUninitialized:true
+	})); // session secret 
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
+require('../config/passport/passport.js')(passport, models.tbl_users);
+
+console.log(models);
+
+//Sync Database 
+initModels.sequelize.sync().then(function() {
+    console.log('Nice! Database looks fine');
+}).catch(function(err) {
+    console.log(err, "Something went wrong with the Database Update!");
+});
 
 app.use((req, res, next) => {
 	logger.log('the url you are trying to reach is not hosted on our server', 'error');
