@@ -1,6 +1,6 @@
-//const sequelize = require('../server/index').sequelize;
+const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('course_progress', {
+  return sequelize.define('tbl_course_progress', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'course_progress',
+    tableName: 'tbl_course_progress',
     timestamps: false,
     indexes: [
       {

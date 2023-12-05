@@ -1,4 +1,4 @@
-var bCrypt = require('bcrypt');
+const crypto = require('crypto');
 
 module.exports = function(passport, user){
     var User = user;
@@ -12,11 +12,7 @@ module.exports = function(passport, user){
         },
 
         function(req, username, password, done){
-            var salt = bCrypt.genSalt(8);
-
-            var generateHash = function(password) {
-                return bCrypt.hashSync(password, salt, null)
-            };
+            var salt = createSalt();
 
             User.findOne({
                 where: {
@@ -30,7 +26,7 @@ module.exports = function(passport, user){
                     });
                 } else
                 {
-                    var userPassword = generateHash(password);
+                    var userPassword = hashPassword(password, salt);
                     var data = 
                         {
                             username: username,
@@ -67,4 +63,14 @@ module.exports = function(passport, user){
             }
         });
     });
+}
+
+//creates a random Salt
+function createSalt(){
+    return crypto.randomBytes(16).toString('hex');
+}
+
+//creates password hash
+function hashPassword(pw, salt){
+    return crypto.pbkdf2Sync(pw, salt, 1000, 64, `sha256`).toString('hex');
 }

@@ -1,5 +1,5 @@
 {
-  "name": "ilrn",
+  "name": "Course Plattform",
   "version": "1.0.0",
   "description": "this is a back end project structure example",
   "main": "server.js",
@@ -15,7 +15,7 @@
     "type": "git",
     "url": ""
   },
-  "author": "Nils",
+  "author": "Smart Work AG",
   "license": "ISC",
   "dependencies": {
     "async": "^2.6.4",

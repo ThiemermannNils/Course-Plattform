@@ -9,6 +9,8 @@ router.post("/signup", passport.authenticate('local-signup', {
     failureRedirect: '/signup'
 }))
 
+router.post("/signin")
+
 router.get("/dashboard", isLoggedIn, authController.dashboard)
 
 router.get('/logout',authController.logout);

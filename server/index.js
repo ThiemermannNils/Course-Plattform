@@ -10,7 +10,7 @@ var session = require('express-session');
 
 const Sequelize = require("sequelize")
 //Models 
-var models = require("../models/init-models.js");
+var Models = require("../models/init-models.js");
 
 const sequelize = new Sequelize(config.db.database, config.db.username, config.db.password, {
 	host: config.db.host,
@@ -25,7 +25,7 @@ const sequelize = new Sequelize(config.db.database, config.db.username, config.d
 	},
   });
 
-models.initModels(sequelize);
+models = Models.initModels(sequelize);
 
 const logger = new Logger();
 const app = express();
