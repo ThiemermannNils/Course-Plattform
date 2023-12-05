@@ -7,9 +7,25 @@ const config = require('../config/appconfig');
 const Logger = require('../utils/logger.js');
 var passport = require('passport');
 var session = require('express-session');
-//Models 
-var models = require("../models");
 
+const Sequelize = require("sequelize")
+//Models 
+var models = require("../models/init-models.js");
+
+const sequelize = new Sequelize(config.db.database, config.db.username, config.db.password, {
+	host: config.db.host,
+	dialect: 'mysql',
+	operatorsAliases: false,
+  
+	pool: {
+	  max: 5,
+	  min: 0,
+	  acquire: 30000,
+	  idle: 10000
+	},
+  });
+
+models.initModels(sequelize);
 
 const logger = new Logger();
 const app = express();
@@ -50,10 +66,8 @@ app.use(passport.session()); // persistent login sessions
 
 require('../config/passport/passport.js')(passport, models.tbl_users);
 
-console.log(models);
-
 //Sync Database 
-initModels.sequelize.sync().then(function() {
+sequelize.sync().then(function() {
     console.log('Nice! Database looks fine');
 }).catch(function(err) {
     console.log(err, "Something went wrong with the Database Update!");

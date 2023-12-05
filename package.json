@@ -13,9 +13,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://github.com/AlaaMezian/NodeJs-backend-structure.git"
+    "url": ""
   },
-  "author": "Ala'a Mezian",
+  "author": "Nils",
   "license": "ISC",
   "dependencies": {
     "async": "^2.6.4",

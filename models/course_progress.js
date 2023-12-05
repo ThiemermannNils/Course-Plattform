@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+//const sequelize = require('../server/index').sequelize;
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('course_progress', {
     id: {
