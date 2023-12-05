@@ -4,12 +4,9 @@ const passport = require('passport');
 const authController = require('../../controllers/AuthController');
 
 
-router.post("/signup", passport.authenticate('local-signup', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/signup'
-}))
+router.post("/signup", passport.authenticate('local-signup'));
 
-router.post("/signin")
+router.post("/signin");
 
 router.get("/dashboard", isLoggedIn, authController.dashboard)
 

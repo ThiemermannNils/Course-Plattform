@@ -32,9 +32,19 @@ const app = express();
 app.set('config', config); // the system configrationsx
 app.use(bodyParser.json());
 app.use(require('method-override')());
-
 app.use(compression());
 app.use(cors());
+
+// For Passport 
+app.use(session({
+	secret: 'shouldIwritethesecretintoaenvfileorconfigfile?',
+	resave: true, 
+	saveUninitialized:true
+	})); // session secret 
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
+
 const swagger = require('../utils/swagger');
 
 
@@ -42,6 +52,12 @@ process.on('SIGINT', () => {
 	logger.log('stopping the server', 'info');
 	process.exit();
 });
+
+app.use(express.urlencoded({
+	extended: true 
+	})
+);
+app.use(express.json());
 
 app.set('port', process.env.DEV_APP_PORT);
 app.use('/api/docs', swagger.router);
@@ -54,15 +70,6 @@ app.use((req, res, next) => {
 });
 
 app.use(require('../router'));
-
-// For Passport 
-app.use(session({
-	secret: 'keyboard cat',
-	resave: true, 
-	saveUninitialized:true
-	})); // session secret 
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
 
 require('../config/passport/passport.js')(passport, models.tbl_users);
 
