@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 
+
 module.exports = function(passport, user){
     var User = user;
     var LocalStrategy = require('passport-local').Strategy;
@@ -14,22 +15,25 @@ module.exports = function(passport, user){
         function(req, username, password, done){
             var salt = createSalt();
 
+            console.log("this is the password: " + password);
+            console.log("THIS IS the username: "+ username);
+
             User.findOne({
                 where: {
-                    username: username
+                    username: req.body.username
                 }
             }).then(function(user) {
                 if(user)
                 {
                     return done(null, false, {
-                        message: 'That email is already taken'
+                        message: 'That username is already taken'
                     });
                 } else
                 {
-                    var userPassword = hashPassword(password, salt);
+                    var userPassword = hashPassword(req.body.password, salt);
                     var data = 
                         {
-                            username: username,
+                            username: req.body.username,
                             email: req.body.email,
                             password: userPassword,
                             salt: salt,
@@ -37,9 +41,13 @@ module.exports = function(passport, user){
                         };
                     User.create(data).then(function(newUser, created){
                         if(!newUser){
-                            return done(null, false);
+                            //const response = { status: 500, user: null, success: false, messageCode: 1, message: "signup failed"}
+
+                            return done(null, null);
                         }
                         if(newUser){
+                            //const response = { status: 200, user: newUser, success: true, messageCode: 1, message: "signup Successfull"}
+                            
                             return done(null, newUser);
                         }
                     });
@@ -47,6 +55,7 @@ module.exports = function(passport, user){
             });
         },
     ));
+
 
     //serialize 
     passport.serializeUser(function(user, done) {

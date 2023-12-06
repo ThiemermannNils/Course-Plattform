@@ -1,15 +1,15 @@
 var exports = module.exports = {}
 exports.signup = function(req, res) {
-    res.render('signup');
+    return res.json({message: "successfull sigend up"});
 }
 exports.signin = function(req, res) {
-    res.render('signin');
+    return res.json({message: "successfull sigend in"});
 }
+   
 exports.dashboard = function(req, res) {
     return res.json({message: "successful"});
 }
 exports.logout = function(req, res) {
     req.session.destroy(function(err) {
-        res.redirect('/');
     });
 }

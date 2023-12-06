@@ -80,12 +80,15 @@ sequelize.sync().then(function() {
     console.log(err, "Something went wrong with the Database Update!");
 });
 
+/*
 app.use((req, res, next) => {
+	console.log(req)
 	logger.log('the url you are trying to reach is not hosted on our server', 'error');
 	const err = new Error('Not Found');
 	err.status = 404;
 	res.status(err.status).json({ type: 'error', message: 'the url you are trying to reach is not hosted on our server' });
 	next(err);
 });
+*/
 
 module.exports = app;
