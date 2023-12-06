@@ -33,7 +33,16 @@ router.post("/signup", passport.authenticate('local-signup', {
 );
 */
 
-router.post("/signin", passport.authenticate('local-signin'));
+router.post("/signin", passport.authenticate('local-signin'), (req, res) => {
+  console.log(req.user);
+  if (req.user) {
+    res.status(200).json({message: "User successfully logedin", data: req.user.dataValues});
+    //res.redirect('/admin/gifts?filter=review');
+  }
+  if (!req.user) {
+    res.status(500).json({message: "User failed to login"});
+  }
+});
 
 router.get("/dashboard", isLoggedIn, authController.dashboard)
 
