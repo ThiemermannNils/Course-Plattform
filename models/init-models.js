@@ -56,3 +56,4 @@ function initModels(sequelize) {
 module.exports = initModels;
 module.exports.initModels = initModels;
 module.exports.default = initModels;
+module.exports.user = _tbl_users;

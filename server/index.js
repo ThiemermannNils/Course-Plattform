@@ -25,7 +25,7 @@ const sequelize = new Sequelize(config.db.database, config.db.username, config.d
 	},
   });
 
-models = Models.initModels(sequelize);
+var models = Models.initModels(sequelize);
 
 const logger = new Logger();
 const app = express();
@@ -37,7 +37,7 @@ app.use(cors());
 
 // For Passport 
 app.use(session({
-	secret: 'shouldIwritethesecretintoaenvfileorconfigfile?',
+	secret: 'shouldIwritethesecretintoanenvfileorconfigfile?',
 	resave: true, 
 	saveUninitialized:true
 	})); // session secret 
@@ -90,5 +90,5 @@ app.use((req, res, next) => {
 	next(err);
 });
 */
-
+module.exports.Models = models;
 module.exports = app;
