@@ -40,6 +40,7 @@ module.exports = function(passport, user){
                     username: req.body.username
                 }
             }).then(function(user) {
+                console.log(user);
                 if(user)
                 {
                     // Username already exists, return an error message
