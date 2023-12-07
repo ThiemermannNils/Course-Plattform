@@ -18,4 +18,6 @@ router.use('/course', require('./course'));
 
 router.use('/video', require('./video'));
 
+router.use('/paymentInfo', require('./paymentInfo'));
+
 module.exports = router;
