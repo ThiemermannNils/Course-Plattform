@@ -1,5 +1,3 @@
-
-
 const router = require('express').Router();
 
 router.use('/email', require('./sendEmail'));
@@ -17,5 +15,7 @@ router.use('/category', require('./category'));
 router.use('/salesoffer', require('./salesoffer'));
 
 router.use('/course', require('./course'));
+
+router.use('/video', require('./video'));
 
 module.exports = router;
