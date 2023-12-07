@@ -22,6 +22,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     id: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true

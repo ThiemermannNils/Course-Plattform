@@ -8,8 +8,6 @@ router.use('/auth', require('./auth'));
 
 router.use('/user', require('./user'));
 
-router.get('/status', (req, res) => {
-    return res.status(200).json({ message: "Success"});
-});
+router.use('/author', require('./author'));
 
 module.exports = router;
