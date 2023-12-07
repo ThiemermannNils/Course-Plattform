@@ -10,4 +10,8 @@ router.use('/user', require('./user'));
 
 router.use('/author', require('./author'));
 
+router.use('/paymentHistory', require('./paymentHistory'));
+
+router.use('/category', require('./category'));
+
 module.exports = router;

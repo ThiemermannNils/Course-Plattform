@@ -125,6 +125,8 @@ exports.updateAuthor = function(req, res, next){
             }).catch((error)=>{
                 return res.status(500).json({error: error});
             })
+        }else{
+            return res.status(404).json({message:"Id not found"});
         }
     }).catch((error)=>{
         return res.status(500).json({error: error});
