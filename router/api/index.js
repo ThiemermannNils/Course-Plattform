@@ -14,4 +14,8 @@ router.use('/paymentHistory', require('./paymentHistory'));
 
 router.use('/category', require('./category'));
 
+router.use('/salesoffer', require('./salesoffer'));
+
+router.use('/course', require('./course'));
+
 module.exports = router;
