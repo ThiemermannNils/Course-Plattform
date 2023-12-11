@@ -6,8 +6,8 @@
  */
 
 const http = require('http');
-const app = require('../../server/index');
-const Logger = require('../../utils/logger');
+const app = require('../server/index');
+const Logger = require('../utils/logger');
 
 const logger = new Logger();
 

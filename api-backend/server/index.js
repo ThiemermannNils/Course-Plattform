@@ -3,8 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const compression = require('compression');
 const uuid = require('uuid');
-const config = require('../../config/appconfig.js');
-const Logger = require('../../utils/logger.js');
+const config = require('../config/appconfig.js');
+const Logger = require('../utils/logger.js');
 var passport = require('passport');
 var session = require('express-session');
 
@@ -45,7 +45,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
 
-const swagger = require('../../utils/swagger.js');
+const swagger = require('../utils/swagger.js');
 
 
 process.on('SIGINT', () => {
@@ -69,9 +69,9 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use(require('../../router/index.js'));
+app.use(require('../router/index.js'));
 
-require('../../config/passport/passport.js')(passport, models.tbl_users);
+require('../config/passport/passport.js')(passport, models.tbl_users);
 
 //Sync Database 
 sequelize.sync().then(function() {
