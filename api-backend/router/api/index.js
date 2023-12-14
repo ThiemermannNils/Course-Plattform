@@ -1,25 +1,27 @@
 const router = require('express').Router();
 
+const auth = require('../../controllers/AuthController');
+
 router.use('/email', require('./sendEmail'));
 
 router.use('/auth', require('./auth'));
 
-router.use('/user', require('./user'));
+router.use('/user', auth.isLoggedIn, require('./user'));
 
-router.use('/author', require('./author'));
+router.use('/author', auth.isLoggedIn, require('./author'));
 
-router.use('/paymentHistory', require('./paymentHistory'));
+router.use('/paymentHistory', auth.isLoggedIn, require('./paymentHistory'));
 
-router.use('/category', require('./category'));
+router.use('/category', auth.isLoggedIn, require('./category'));
 
-router.use('/salesoffer', require('./salesoffer'));
+router.use('/salesoffer', auth.isLoggedIn, require('./salesoffer'));
 
-router.use('/course', require('./course'));
+router.use('/course', auth.isLoggedIn, require('./course'));
 
-router.use('/video', require('./video'));
+router.use('/video', auth.isLoggedIn, require('./video'));
 
-router.use('/paymentInfo', require('./paymentInfo'));
+router.use('/paymentInfo', auth.isLoggedIn, require('./paymentInfo'));
 
-router.use('/courseProgress', require('./courseProgress'));
+router.use('/courseProgress', auth.isLoggedIn, require('./courseProgress'));
 
 module.exports = router;

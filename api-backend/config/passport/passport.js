@@ -111,9 +111,7 @@ module.exports = function(passport, user){
 
             //pass user data to Request
             var userinfo = user.get();
-
-            console.log("Line 115:", userinfo);
-
+            
             return done(null, userinfo);
         
         //catch Error
