@@ -79,13 +79,39 @@ exports.getAuthorsById = function(req, res, next){
     })
 }
 
-exports.deleteAuthor = function(req, res, next){
+//
+exports.deleteAuthor = async function(req, res, next){
     var Author = model.Models.tbl_author;
+    var Course = model.Models.tbl_course;
 
     //get id form request
     const id = req.params.id;
 
-    //delete User
+    //Find Author
+    await Author.findByPk(id).then((author)=>{
+        if (author){
+            //Destroy Course from the Author
+            Course.destroy({ where: {tbl_author_id: author.id}});
+            const courseMsg = "Course Relations destroyed";
+
+            //Destroy the Author
+            author.destroy()
+            .then((result)=>{
+                //return Json
+                if(result){
+                    return res.status(200).json({ message: "Author deleted successfully", msg: courseMsg, result: result})
+                }else{
+                    return res.status(404).json({ message: "Author not found"});
+                }
+            }).catch((error)=>{
+                return res.status(500).json({message: "Error", error: error});
+            });
+        }
+    }).catch((error)=>{
+        return res.status(500).json({message: "Error", error: error});
+    });
+
+    /*
     Author.destroy({
         where: {
             id:id
@@ -100,6 +126,7 @@ exports.deleteAuthor = function(req, res, next){
     }).catch((error)=>{
         return res.status(500).json({message: "Error", error: error});
     });
+    */
 }
 
 exports.updateAuthor = function(req, res, next){
