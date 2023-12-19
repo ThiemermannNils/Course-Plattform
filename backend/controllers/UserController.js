@@ -1,16 +1,23 @@
+/*
+    !Autor: Nils Thiemermann
+    ?Date: 07.12.2023
+
+    * UserController Handles HTTP requests like post, get, put, delete for the URL .../user/..
+    * it will respond with a Json mostly with a Message and a Status code
+*/
+
 var exports = module.exports = {};
 
 var model = require("../server/index");
-
 
 exports.deleteUser = async function(req, res, next){
     var User = model.Models.tbl_users;
 
     console.log(User);
-    //get Id from params
+    // get Id from params
     const id = req.params.id;
 
-    //delete user with Id
+    // delete user with Id
     User.destroy({
         where: {
             id: id
@@ -30,7 +37,7 @@ exports.deleteUser = async function(req, res, next){
 exports.readUser = function(req, res, next){
     var User = model.Models.tbl_users
 
-    //get all User from db
+    // get all User from db
     User.findAll().then((result) => {
         console.log(result);
         //return the results 
@@ -82,7 +89,6 @@ exports.getUserById = function(req, res, next){
     const id = req.params.id;
 
     //find User by id
-
     User.findByPk(id)
     .then((result) => {
         console.log(result);

@@ -2,7 +2,7 @@ const helper = require('sendgrid').mail;
 const async = require('async');
 const config = require('../config/appconfig');
 const sg = require('sendgrid')(config.sendgrid.api_key);
-const Logger = require('../utils/logger');
+const Logger = require('./logger');
 
 const logger = new Logger();
 
