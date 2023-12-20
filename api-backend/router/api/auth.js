@@ -35,9 +35,8 @@ router.post("/signup", passport.authenticate('local-signup', {
 
 router.post("/signin", passport.authenticate('local-signin'), (req, res) => {
   if (req.user) {
-    const id = req.user.id;
-    console.log(id);
-    res.status(200).json({message: "User successfully logedin", data: req.user, success: true, userid: id});
+    console.log(req.session.passport.user);
+    res.status(200).json({message: "User successfully logedin", data: req.user, success: true});
     //res.redirect('/admin/gifts?filter=review');
   }
   if (!req.user) {

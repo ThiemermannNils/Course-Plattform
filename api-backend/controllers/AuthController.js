@@ -10,10 +10,12 @@ exports.dashboard = function(req, res) {
     return res.json({message: "successful"});
 }
 exports.logout = function(req, res) {
-    req.session.destroy(function(err) {
-    });
+    console.log(req.session);
+    req.session.destroy();
 
-    return res.json({ message: "User successfully loged out" });
+    console.log("After destroy", req.session);
+
+    return res.json({ logedout: true, message: "User successfully loged out" });
 }
 
 //Check if user is logged in
@@ -25,6 +27,7 @@ exports.isLoggedIn = function(req, res, next) {
         //if authenticated continue 
         return next();
         
+    console.log("no user loged in", req.isAuthenticated());
     return res.json({message: "no user is loggedin"})
 }
 
