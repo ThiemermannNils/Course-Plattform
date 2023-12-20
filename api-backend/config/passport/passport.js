@@ -111,7 +111,6 @@ module.exports = function(passport, user){
 
             //pass user data to Request
             var userinfo = user.get();
-            
             return done(null, userinfo);
         
         //catch Error
