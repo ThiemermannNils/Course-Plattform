@@ -26,8 +26,7 @@ exports.isLoggedIn = function(req, res, next) {
         
         //if authenticated continue 
         return next();
-        
-    console.log("no user loged in", req.isAuthenticated());
+
     return res.json({message: "no user is loggedin"})
 }
 

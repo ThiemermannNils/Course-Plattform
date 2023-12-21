@@ -6,7 +6,7 @@ const authController = require('../../controllers/AuthController');
 router.post("/signup", passport.authenticate("local-signup"), (req, res) => {
     console.log(req.user);
     if (req.user) {
-      res.status(200).json({message: "User successfully created", data: req.user.dataValues});
+      res.status(200).json({message: "User successfully created", username: req.user.dataValues.username, session: req.session});
       //res.redirect('/admin/gifts?filter=review');
     }
     if (!req.user) {
@@ -35,8 +35,8 @@ router.post("/signup", passport.authenticate('local-signup', {
 
 router.post("/signin", passport.authenticate('local-signin'), (req, res) => {
   if (req.user) {
-    console.log(req.session.passport.user);
-    res.status(200).json({message: "User successfully logedin", data: req.user, success: true});
+    console.log(req.session);
+    res.status(200).json({message: "User successfully logedin", session: req.session, success: true});
     //res.redirect('/admin/gifts?filter=review');
   }
   if (!req.user) {

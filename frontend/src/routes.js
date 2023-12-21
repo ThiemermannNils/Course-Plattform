@@ -1,6 +1,6 @@
 import Login from './components/unauth/Login.vue'
 import Register from './components/unauth/Register.vue'
-import Dashboard from './components/auth/Dashboard.vue'
+import Dashboard from './components/auth/user/Dashboard.vue'
 import Logout from './components/auth/Logout.vue'
 
 export default [
