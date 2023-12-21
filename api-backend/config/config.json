@@ -1,0 +1,29 @@
+{
+  "development": {
+    "url" : "mysql://user:password@localhost:3306/course_plattform",
+    "username": "root",
+    "password": "123",
+    "database": "course_plattform",
+    "host": "127.0.0.1",
+    "port": 3306,
+     "dialect": "mysql"
+  },
+  "test": {
+    "url" : "mysql://user:password@localhost:3306/course_plattform",
+    "username": "root",
+    "password": "123",
+    "database": "course_plattform",
+    "host": "127.0.0.1",
+    "port": 3306,
+     "dialect": "mysql"
+  },
+  "production": {
+    "url" : "mysql://user:password@localhost:3306/course_plattform",
+    "username": "root",
+    "password": "123",
+    "database": "course_plattform",
+    "host": "127.0.0.1",
+    "port": 3306,
+      "dialect": "mysql"
+  }
+}
