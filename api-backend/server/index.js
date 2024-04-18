@@ -90,5 +90,6 @@ app.use((req, res, next) => {
 	next(err);
 });
 */
+module.exports.Passport = passport;
 module.exports.Models = models;
 module.exports = app;

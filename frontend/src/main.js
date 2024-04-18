@@ -5,6 +5,7 @@ import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import Routes from './routes'
 import BootstrapVue3 from 'bootstrap-vue-3'
+import store from './store'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -17,5 +18,6 @@ const router = new createRouter({
 
 app.use(router);
 app.use(BootstrapVue3);
+app.use(store);
 
 app.mount('#app');

@@ -1,27 +1,26 @@
 const router = require('express').Router();
+const passport = require('passport');
 
 const auth = require('../../controllers/AuthController');
 
-router.use('/email', require('./sendEmail'));
-
 router.use('/auth', require('./auth'));
 
-router.use('/user', auth.isLoggedIn, require('./user'));
+router.use('/user', passport.authenticate('jwt', { session: false }), require('./user'));
 
-router.use('/author', auth.isLoggedIn, require('./author'));
+router.use('/author', passport.authenticate('jwt', { session: false }), require('./author'));
 
-router.use('/paymentHistory', auth.isLoggedIn, require('./paymentHistory'));
+router.use('/paymentHistory', passport.authenticate('jwt', { session: false }), require('./paymentHistory'));
 
-router.use('/category', auth.isLoggedIn, require('./category'));
+router.use('/category', passport.authenticate('jwt', { session: false }), require('./category'));
 
-router.use('/salesoffer', auth.isLoggedIn, require('./salesoffer'));
+router.use('/salesoffer', passport.authenticate('jwt', { session: false }), require('./salesoffer'));
 
-router.use('/course', auth.isLoggedIn, require('./course'));
+router.use('/course', passport.authenticate('jwt', { session: false }), require('./course'));
 
-router.use('/video', auth.isLoggedIn, require('./video'));
+router.use('/video', passport.authenticate('jwt', { session: false }), require('./video'));
 
-router.use('/paymentInfo', auth.isLoggedIn, require('./paymentInfo'));
+router.use('/paymentInfo', passport.authenticate('jwt', { session: false }), require('./paymentInfo'));
 
-router.use('/courseProgress', auth.isLoggedIn, require('./courseProgress'));
+router.use('/courseProgress', passport.authenticate('jwt', { session: false }), require('./courseProgress'));
 
 module.exports = router;

@@ -1,33 +1,35 @@
 <script>
 import axios from "axios"
-
+import { mapActions, mapGetters } from "vuex";
 export default {
-    data(){
-        return{
-            username: "",
-            password: "",
+    data: () => ({
+        username: "",
+        password: ""
+    }),
+    computed: {
+        ...mapGetters(["getToken", "getUserId"])
+    },
+    methods: {
+        ...mapActions(["loginSession", "logoutSession", "getSession"]),
+        async checkLogin(){
+            try {
+                const { data } = await axios.post("http://localhost:3000/api/v1/auth/signin", {
+                username: this.username,
+                password: this.password
+                });
+                this.loginSession(data);
+                this.$router.push("/dashboard");
+            } catch (error) {
+                console.log(error);
+                alert("problems?");
+            }
+        }, 
+        handleLogout() {
+            this.logoutSession();
         }
     },
-
-    methods: {
-        checkLogin(){
-
-
-            const creds = {username: this.username, password: this.password};
-
-            axios.post("http://localhost:3000/api/v1/auth/signin", creds)
-            .then(response =>{
-                console.log(response);
-                if(response.data.success){
-                    console.log(response.data.data);
-                    //redirect to dashboard
-                    this.$router.push("/dashboard");
-                }else{
-                }
-            }).catch(error =>{
-                console.log(error);
-            })
-        }
+    created(){
+        this.getSession();
     }
 }
 </script>

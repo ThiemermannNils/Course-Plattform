@@ -18,6 +18,7 @@ exports.logout = function(req, res) {
     return res.json({ logedout: true, message: "User successfully loged out" });
 }
 
+/*
 //Check if user is logged in
 exports.isLoggedIn = function(req, res, next) {
 
@@ -29,7 +30,7 @@ exports.isLoggedIn = function(req, res, next) {
 
     return res.json({message: "no user is loggedin"})
 }
-
+*/
 exports.isAdmin = function(req, res,next){
  return
 }

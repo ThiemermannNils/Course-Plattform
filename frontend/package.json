@@ -1,5 +1,5 @@
 {
-  "name": " frontend",
+  "name": "frontend",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -9,10 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.11"
+    "axios": "^1.6.2",
+    "bootstrap": "^5.3.2",
+    "bootstrap-vue": "^2.23.1",
+    "bootstrap-vue-3": "^0.5.1",
+    "vue": "^3.3.13",
+    "vue-router": "^4.2.5",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
-    "vite": "^5.0.10"
+    "vite": "^5.0.10",
+    "vue-session": "^1.0.0"
   }
 }
